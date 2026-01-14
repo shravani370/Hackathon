@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="student-bg">
+
+    <!-- Main Title -->
+    <h1 class="main-title">
+        AI‑Driven Training & Placement System
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="subtitle">
+        Student Registration
+    </p>
+
+    <!-- ✅ SUCCESS MESSAGE -->
+    {% if success %}
+    <p class="success-msg">
+        Registration Successful, {{ name }} (Year: {{ year }}) ✅
+    </p>
+    {% endif %}
+
+    <!-- Registration Form -->
+    <form class="student-form" method="POST" action="/student">
+
+        <label>Student Name</label>
+        <input type="text" name="name" placeholder="Enter full name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter email" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+
+        <label>College Name</label>
+        <input type="text" name="college" placeholder="Enter college name" required>
+
+        <label>Year</label>
+        <select name="year" required>
+            <option value="">Select Year</option>
+            <option value="1st">1st Year</option>
+            <option value="2nd">2nd Year</option>
+            <option value="3rd">3rd Year</option>
+            <option value="4th">4th Year</option>
+        </select>
+
+        <label>Branch</label>
+        <select name="branch" required>
+            <option value="">Select Branch</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="IT">IT</option>
+            <option value="AI & DS">AI & DS</option>
+            <option value="ENTC">ENTC</option>
+            <option value="Mechanical">Mechanical</option>
+        </select>
+
+        <label>Skills</label>
+        <input type="text" name="skills" placeholder="Eg: Python, C, HTML">
+
+        <label>CGPA</label>
+        <input type="number" name="cgpa" step="0.01" placeholder="Eg: 8.5">
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+</html>
