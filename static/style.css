@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -5,12 +6,24 @@
     font-family: Arial, sans-serif;
 }
 
+/* ===== GLOBAL ===== */
 body {
     background: #0f172a;
     color: white;
 }
 
-/* HOME */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== BACKGROUNDS ===== */
+.dark-bg {
+    background: #0f172a;
+    min-height: 100vh;
+}
+
+/* ===== HOME / INDEX ===== */
 .hero {
     height: 100vh;
     display: flex;
@@ -18,168 +31,160 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
 }
 
 .subtitle {
-    margin: 15px 0 25px;
-}
-
-.btn {
-    padding: 12px 25px;
-    background: #2563eb;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-/* DASHBOARD */
-.page-title {
-    text-align: center;
-    margin-top: 60px;
+    font-size: 18px;
+    opacity: 0.85;
     margin-bottom: 30px;
 }
 
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.role {
-    width: 220px;
-    padding: 14px;
-    margin: 10px;
-    text-align: center;
-    border-radius: 6px;
-    text-decoration: none;
-    color: white;
-}
-
-.student { background: #2563eb; }
-.admin { background: #16a34a; }
-.recruiter { background: #9333ea; }
-
-/* STUDENT FORM */
-.form-page {
-    padding: 60px 20px;
-}
-
-.form-page h2,
-.form-page h3 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.student-form {
-    max-width: 450px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.student-form label {
-    margin-top: 12px;
-}
-
-.student-form input,
-.student-form select {
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: none;
-}
-
-.student-form button {
-    margin-top: 20px;
-    padding: 12px;
+.btn {
+    padding: 14px 32px;
     background: #2563eb;
     color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.student-form {
-  width: 100%;
-  max-width: 420px;
-  margin: 120px auto 60px;
-  color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-.student-form h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 26px;
+.btn:hover {
+    background: #1d4ed8;
 }
 
-.student-form input,
-.student-form select {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-.primary-btn {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: #7f5af0;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-.skills-dashboard {
+/* ===== PAGE COMMON ===== */
+.page-container {
     padding: 80px 20px;
     text-align: center;
 }
 
-.skills-dashboard h2 {
-    font-size: 32px;
+.page-title {
+    font-size: 34px;
     margin-bottom: 10px;
 }
 
-.dashboard-subtitle {
+.page-subtitle {
     font-size: 16px;
-    opacity: 0.85;
-    margin-bottom: 40px;
+    opacity: 0.8;
+    margin-bottom: 45px;
 }
 
-.skills-grid {
+/* ===== DASHBOARD / CARDS ===== */
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
     margin: auto;
 }
 
-.skill-card {
+.card {
     background: rgba(255, 255, 255, 0.08);
     padding: 25px;
-    border-radius: 14px;
+    border-radius: 16px;
     text-align: left;
     transition: 0.3s;
 }
 
-.skill-card h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
+.card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.14);
 }
 
-.skill-card p {
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
     font-size: 14px;
     opacity: 0.9;
+    margin-bottom: 10px;
 }
 
-.skill-card:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.note {
-    margin-top: 40px;
+.card-list {
+    margin: 15px 0;
+    padding-left: 18px;
     font-size: 14px;
-    opacity: 0.8;
+}
+
+.card-list li {
+    margin-bottom: 6px;
+}
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #7f5af0;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #6b4ce6;
+}
+
+/* ===== STUDENT FORM ===== */
+.student-form {
+    max-width: 420px;
+    margin: 100px auto 60px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 30px;
+    border-radius: 18px;
+}
+
+.student-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.student-form label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.student-form input,
+.student-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.student-form button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.student-form button:hover {
+    background: #1d4ed8;
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+.success-msg {
+    text-align: center;
+    color: lightgreen;
+    margin-bottom: 20px;
+    font-size: 15px;
 }

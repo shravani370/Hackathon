@@ -6,39 +6,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body class="student-bg">
+<body>
 
-    <!-- Main Title -->
-    <h1 class="main-title">
-        AI‑Driven Training & Placement System
-    </h1>
+<div class="form-wrapper">
 
-    <!-- Subtitle -->
-    <p class="subtitle">
-        Student Registration
+    <h1>Student Registration</h1>
+    <p class="form-subtitle">
+        Register to get AI‑based Training & Placement Guidance
     </p>
 
-    <!-- ✅ SUCCESS MESSAGE -->
     {% if success %}
-    <p class="success-msg">
-        Registration Successful, {{ name }} (Year: {{ year }}) ✅
-    </p>
+    <div class="success-box">
+        Registration successful for <b>{{ name }}</b> ({{ year }})
+    </div>
     {% endif %}
 
-    <!-- Registration Form -->
-    <form class="student-form" method="POST" action="/student">
+    <form method="POST" class="student-form">
 
-        <label>Student Name</label>
-        <input type="text" name="name" placeholder="Enter full name" required>
+        <label>Full Name</label>
+        <input type="text" name="name" required>
 
         <label>Email</label>
-        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="email" name="email" required>
 
         <label>Mobile Number</label>
-        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+        <input type="tel" name="mobile" required>
 
         <label>College Name</label>
-        <input type="text" name="college" placeholder="Enter college name" required>
+        <input type="text" name="college" required>
 
         <label>Year</label>
         <select name="year" required>
@@ -52,22 +47,25 @@
         <label>Branch</label>
         <select name="branch" required>
             <option value="">Select Branch</option>
-            <option value="Computer Engineering">Computer Engineering</option>
-            <option value="IT">IT</option>
-            <option value="AI & DS">AI & DS</option>
-            <option value="ENTC">ENTC</option>
-            <option value="Mechanical">Mechanical</option>
+            <option>Computer Engineering</option>
+            <option>IT</option>
+            <option>AI & DS</option>
+            <option>ENTC</option>
+            <option>Mechanical</option>
         </select>
 
-        <label>Skills</label>
-        <input type="text" name="skills" placeholder="Eg: Python, C, HTML">
+        <label>Skills (comma separated)</label>
+        <input type="text" name="skills" placeholder="Python, C, HTML">
 
         <label>CGPA</label>
-        <input type="number" name="cgpa" step="0.01" placeholder="Eg: 8.5">
+        <input type="number" step="0.01" name="cgpa">
 
-        <button type="submit">Register</button>
+        <button type="submit" class="primary-btn">
+            Register
+        </button>
 
     </form>
+</div>
 
 </body>
 </html>
