@@ -11,18 +11,19 @@ from ai_engine import (
 
 app = Flask(__name__)
 
+# ---------------- TEST ROUTE ----------------
 @app.route("/test")
 def test():
     return "Flask is working perfectly"
 
 
-# HOME
+# ---------------- HOME ----------------
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
-# STUDENT REGISTRATION
+# ---------------- STUDENT REGISTRATION ----------------
 @app.route("/student", methods=["GET", "POST"])
 def student():
     if request.method == "POST":
@@ -33,7 +34,7 @@ def student():
 
         try:
             cgpa = float(request.form.get("cgpa", 0))
-        except:
+        except ValueError:
             cgpa = 0.0
 
         ai_result = analyze_student(year, skills, interest, cgpa)
@@ -58,24 +59,31 @@ def student():
     return render_template("student.html")
 
 
-# AI CHAT
+# ---------------- AI CHAT ----------------
 @app.route("/ai-chat", methods=["POST"])
 def ai_chat():
     msg = request.form.get("message")
-    return jsonify({"reply": chat_with_ai(msg)})
+
+    if not msg:
+        return jsonify({"reply": "Please ask a question."})
+
+    reply = chat_with_ai(msg)
+    return jsonify({"reply": reply})
 
 
-# MOCK INTERVIEW
+# ---------------- MOCK INTERVIEW ----------------
 @app.route("/mock-interview")
 def mock_interview():
-    q = generate_interview_question("technical")
-    return render_template("mock_interview.html", question=q)
+    question = generate_interview_question("technical")
+    return render_template("mock_interview.html", question=question)
 
 
 @app.route("/submit-interview", methods=["POST"])
 def submit_interview():
     answer = request.form.get("answer")
+
     score, feedback = evaluate_interview(answer)
+
     return render_template(
         "interview_result.html",
         score=score,
@@ -83,7 +91,7 @@ def submit_interview():
     )
 
 
-# INDUSTRY TRAINING PATH
+# ---------------- INDUSTRY TRAINING PATH ----------------
 @app.route("/training-path/<interest>")
 def training_path(interest):
     modules = recommend_training_path(interest)
@@ -94,5 +102,6 @@ def training_path(interest):
     )
 
 
+# ---------------- RUN ----------------
 if __name__ == "__main__":
     app.run(debug=True)
