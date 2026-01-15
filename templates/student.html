@@ -6,34 +6,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="dark-bg">
 
-<div class="form-wrapper">
+<div class="form-page">
 
-    <h1>Student Registration</h1>
-    <p class="form-subtitle">
-        Register to get AI‑based Training & Placement Guidance
+    <h2 class="page-title">Student Registration</h2>
+    <p class="page-subtitle">
+        Fill your details to get AI‑based training & placement guidance
     </p>
 
     {% if success %}
     <div class="success-box">
-        Registration successful for <b>{{ name }}</b> ({{ year }})
+        ✅ Registration successful! Welcome {{ name }} ({{ year }})
     </div>
     {% endif %}
 
     <form method="POST" class="student-form">
 
         <label>Full Name</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name" placeholder="Enter your name" required>
 
         <label>Email</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" placeholder="Enter email" required>
 
         <label>Mobile Number</label>
-        <input type="tel" name="mobile" required>
+        <input type="text" name="mobile" placeholder="Enter mobile number" required>
 
         <label>College Name</label>
-        <input type="text" name="college" required>
+        <input type="text" name="college" placeholder="Enter college name" required>
 
         <label>Year</label>
         <select name="year" required>
@@ -45,26 +45,25 @@
         </select>
 
         <label>Branch</label>
-        <select name="branch" required>
-            <option value="">Select Branch</option>
-            <option>Computer Engineering</option>
-            <option>IT</option>
-            <option>AI & DS</option>
-            <option>ENTC</option>
-            <option>Mechanical</option>
-        </select>
+        <input type="text" name="branch" placeholder="Eg: CSE, IT, ENTC" required>
 
         <label>Skills (comma separated)</label>
-        <input type="text" name="skills" placeholder="Python, C, HTML">
+        <input type="text" name="skills"
+               placeholder="Eg: Python, HTML, CSS, SQL">
+
+        <label>Interest Areas</label>
+        <input type="text" name="interest"
+               placeholder="Eg: Web, Android, AI, Data Science, Cyber Security">
 
         <label>CGPA</label>
-        <input type="number" step="0.01" name="cgpa">
+        <input type="number" step="0.01" name="cgpa" placeholder="Eg: 7.5" required>
 
         <button type="submit" class="primary-btn">
-            Register
+            Register & Get AI Guidance
         </button>
 
     </form>
+
 </div>
 
 </body>

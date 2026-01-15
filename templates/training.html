@@ -1,89 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Training Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<title>Training</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<body>
 
-<body class="dark-bg">
+<h2>Welcome {{ name }}</h2>
 
-<div class="page-container">
+<h3>Your AI Roadmap</h3>
+<ul>
+{% for r in ai_result.roadmap %}
+<li>{{ r }}</li>
+{% endfor %}
+</ul>
 
-    <h1 class="page-title">AI‑Driven Training Program</h1>
-    <p class="page-subtitle">
-        Personalized skill development based on your current level
-    </p>
+<a href="/training-path/{{ interest }}" class="btn">Industry Training Path</a>
+<a href="/mock-interview" class="btn">Mock Interview</a>
 
-    <div class="card-grid">
+<h3>AI Mentor Chat</h3>
+<input id="msg">
+<button onclick="send()">Ask AI</button>
+<div id="chat"></div>
 
-        <!-- Programming Basics -->
-        <div class="card">
-            <h3>Programming Basics</h3>
-            <p>
-                Strengthen your fundamentals in programming and logic building.
-            </p>
-
-            <ul class="card-list">
-                <li>✔ C / Python basics</li>
-                <li>✔ Logic & problem solving</li>
-                <li>✔ Syntax + practice</li>
-            </ul>
-
-            <button class="primary-btn">Start Basics</button>
-        </div>
-
-        <!-- Web Development -->
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>
-                Learn how real‑world websites are designed and developed.
-            </p>
-
-            <ul class="card-list">
-                <li>✔ HTML – page structure</li>
-                <li>✔ CSS – design & layout</li>
-                <li>✔ Flask – backend basics</li>
-                <li>✔ Forms & routing</li>
-            </ul>
-
-            <button class="primary-btn">Start Web Training</button>
-        </div>
-
-        <!-- Skill Assessment -->
-        <div class="card">
-            <h3>Skill Assessment</h3>
-            <p>
-                Answer a few questions so AI can understand your level.
-            </p>
-
-            <ul class="card-list">
-                <li>✔ Beginner / Intermediate check</li>
-                <li>✔ Strength & weakness analysis</li>
-            </ul>
-
-            <button class="primary-btn">Take Assessment</button>
-        </div>
-
-        <!-- AI Roadmap -->
-        <div class="card">
-            <h3>Personalized AI Roadmap</h3>
-            <p>
-                Based on your answers, AI will suggest what to learn next.
-            </p>
-
-            <ul class="card-list">
-                <li>✔ Step‑by‑step guidance</li>
-                <li>✔ No confusion</li>
-                <li>✔ Year‑wise focus</li>
-            </ul>
-
-            <button class="primary-btn">View Roadmap</button>
-        </div>
-
-    </div>
-
-</div>
+<script>
+function send(){
+let m=document.getElementById("msg").value;
+fetch("/ai-chat",{method:"POST",
+headers:{"Content-Type":"application/x-www-form-urlencoded"},
+body:"message="+m})
+.then(r=>r.json())
+.then(d=>document.getElementById("chat").innerHTML+=
+"<p><b>AI:</b>"+d.reply+"</p>");
+}
+</script>
 
 </body>
 </html>

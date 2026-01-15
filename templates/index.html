@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>AI Driven Training & Placement</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>AI Training & Placement System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<div class="hero">
-  <h1>AI‑Driven Training & Placement System</h1>
-  <p class="subtitle">Smart placement management platform</p>
+<div class="page-container center">
 
-  <a href="/student" class="btn">Get Started</a>
+  <h1 class="page-title">AI‑Driven Training & Placement System</h1>
+  <p class="page-subtitle">
+    Personalized training, AI mock interviews & placement readiness
+  </p>
+
+  <!-- GET STARTED BUTTON -->
+  <a href="/student">
+    <button type="button" class="primary-btn get-started-btn">
+      Get Started
+    </button>
+  </a>
+
 </div>
 
 </body>
